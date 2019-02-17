@@ -7,17 +7,5 @@ jobs:
       - checkout
       - run: dotnet build
       - run: dotnet test --no-build
-  run_codacy:
-    docker:
-      - image: openjdk:12-jdk
-    steps:
-      - run: java --version
-      - run: apt-get update && apt-get install make curl
-      - run: curl -L https://github.com/codacy/codacy-analysis-cli/archive/master.tar.gz | tar xvz
-      - run: cd codacy-analysis-cli-* && sudo make install
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - run_codacy
+      - run: curl -L https://github.com/codacy/codacy-analysis-cli/archive/0.1.0.tar.gz | tar xvz
+      - run: ls
