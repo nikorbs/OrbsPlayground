@@ -10,10 +10,11 @@ jobs:
   run_codacy:
     machine: true
     steps:
-      - checkout
       - run: curl -L https://github.com/codacy/codacy-analysis-cli/archive/master.tar.gz | tar xvz
       - run: cd codacy-analysis-cli-* && sudo make install
       - run: find .
+      - run: cd ..
+      - run: checkout
       - run: codacy-analysis-cli analyse --tool sonar-csharp
 workflows:
   version: 2
