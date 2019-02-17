@@ -11,6 +11,7 @@ jobs:
     docker:
       - image: codacy/codacy-analysis-cli:latest
     steps:
+      - run: ll
       - run: codacy-analysis-cli
 workflows:
   version: 2
