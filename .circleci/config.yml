@@ -22,7 +22,7 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
       - run: curl -L https://github.com/codacy/codacy-analysis-cli/archive/master.tar.gz | tar xvz
-      - run: cd codacy-analysis-cli-* && sudo make install
+      - run: cd codacy-analysis-cli-* && sudo make install --retry-connrefused http://localhost:8080
       - run: codacy-analysis-cli
 workflows:
   version: 2
