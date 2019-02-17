@@ -12,6 +12,7 @@ jobs:
       - image: openjdk:12-jdk
     steps:
       - run: java --version
+      - run: make --version
 workflows:
   version: 2
   build_and_test:
