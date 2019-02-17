@@ -7,6 +7,5 @@ jobs:
       - checkout
       - run: dotnet build
       - run: dotnet test --no-build
-      - run: curl -L https://github.com/codacy/codacy-analysis-cli/archive/0.1.0.tar.gz | tar xvz
       - run: make --version
-      - run: codacy-analysis-cli-0.1.0/bin/codacy-analysis-cli.sh analyse
+      - run: docker run codacy-analysis-cli:latest
