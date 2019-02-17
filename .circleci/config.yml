@@ -9,7 +9,7 @@ jobs:
       - run: dotnet test --no-build
   run_codacy:
     docker:
-      - image: openjdk:12jdk
+      - image: openjdk:12-jdk
     steps:
       - run: java --version
 workflows:
