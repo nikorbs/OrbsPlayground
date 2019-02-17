@@ -9,9 +9,9 @@ jobs:
       - run: dotnet test --no-build
   run_codacy:
     docker:
-      - image: codacy/codacy-analysis-cli:latest
+      - image: openjdk:12jdk
     steps:
-      - run: codacy-analysis-cli --help
+      - run: java --version
 workflows:
   version: 2
   build_and_test:
