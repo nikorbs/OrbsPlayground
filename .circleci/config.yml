@@ -7,4 +7,12 @@ jobs:
       - checkout
       - run: dotnet build
       - run: dotnet test --no-build
-      - run: docker run codacy-analysis-cli:latest
+  run_codacy:
+    docker:
+      - image: codacy/codacy-analysis-cli:latest
+    steps:
+      - run: codacy-analysis-cli
+workflow:
+  jobs:
+    - build
+    - run_codacy
