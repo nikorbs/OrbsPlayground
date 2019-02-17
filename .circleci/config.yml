@@ -11,7 +11,7 @@ jobs:
     docker:
       - image: docker:latest
     steps:
-      - run: apk add --update make curl
+      - run: apk add --update make curl bash
       - run: curl -L https://github.com/codacy/codacy-analysis-cli/archive/master.tar.gz | tar xvz
       - run: cd codacy-analysis-cli-* && make install
       - run: codacy-analysis-cli
