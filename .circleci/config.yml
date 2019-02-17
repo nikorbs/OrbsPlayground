@@ -22,6 +22,7 @@ jobs:
       - run: |
           name: Run codacy
           command: |
+            $CODACY_CODE = "/usr" \
             docker run \
             --rm=true \
             --env CODACY_CODE="$CODACY_CODE" \
@@ -29,7 +30,7 @@ jobs:
             --volume "$CODACY_CODE":"$CODACY_CODE" \
             --volume /tmp:/tmp \
             codacy/codacy-analysis-cli \
-              analyse --tool <TOOL-SHORT-NAME>
+              analyse --tool
 workflows:
   version: 2
   build_and_check:
