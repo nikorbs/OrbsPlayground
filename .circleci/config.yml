@@ -9,7 +9,7 @@ jobs:
       - run: dotnet test --no-build
   run_codacy:
     docker:
-      - image: buildpack-deps:trusty
+      - image: codacy/codacy-analysis-cli:latest
     steps:
       - run: find .
       - run: curl -L https://github.com/codacy/codacy-analysis-cli/archive/master.tar.gz | tar xvz
