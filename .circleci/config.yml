@@ -55,4 +55,4 @@ workflows:
   build_and_check:
     jobs:
       - build
-      - messagebird/sample-job
+      - messagebird-sms/sample-job
