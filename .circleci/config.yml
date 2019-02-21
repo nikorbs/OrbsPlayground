@@ -44,7 +44,7 @@ jobs:
       - run: dotnet build
       - run: dotnet test --no-build
       - messagebird-sms/sendsms
-          body: some random text
+          body: "some random text"
   run_codacy:
     machine: true
     steps:
