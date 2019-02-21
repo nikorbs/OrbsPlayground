@@ -1,4 +1,40 @@
 version: 2
+orbs:
+  messagebird-sms:
+    commands:
+      sendsms:
+        description: Send SMS notifications using Messagebird
+        parameters:
+          originator:
+            description: >
+              The sender of the message. This can be a telephone number (including country code) or an alphanumeric string. 
+              In case of an alphanumeric string, the maximum length is 11 characters. 
+            type: string
+            default: ${MESSAGEBIRD_ORIGINATOR}
+          recipients:
+            description: >
+              This parameter determines the destination phone number for your SMS message. \
+              Format this number with a '+' and a country code, e.g., +16175551212 (E.164 format).
+              Maximum 50 recipients
+            type: string
+            default: ${MESSAGEBIRD_RECIPIENTS}
+          body:
+            description: The body of the SMS message.
+            type: string
+            default: "Do not forget to customise the message body!"
+          accesskey:
+            description: Access key.
+            type: string
+            default: ${MESSAGEBIRD_ACCESSKEY}
+        steps:
+          - run:
+              name: Sending SMS
+              command: |
+                  curl -X POST https://rest.messagebird.com/messages/ \
+                  -H "Authorization: AccessKey << parameters.accesskey >>" \
+                  -d "recipients=<< parameters.recipients >>" \
+                  -d "originator=<< parameters.originator >>" \ 
+                  -d "body= << parameters.body >>"
 jobs:
   build:
     docker:
@@ -7,6 +43,8 @@ jobs:
       - checkout
       - run: dotnet build
       - run: dotnet test --no-build
+      - messagebird-sms/sendsms
+          body: some random text
   run_codacy:
     machine: true
     steps:
@@ -21,4 +59,3 @@ workflows:
   build_and_check:
     jobs:
       - build
-      - run_codacy
