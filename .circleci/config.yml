@@ -28,6 +28,9 @@ orbs:
             default: ${MESSAGEBIRD_ACCESSKEY}
         steps:
           - run: echo "test"
+    jobs:
+      sample-job:
+        - sendsms
 jobs:
   build:
     docker:
@@ -52,3 +55,4 @@ workflows:
   build_and_check:
     jobs:
       - build
+      - messagebird/sample-job
