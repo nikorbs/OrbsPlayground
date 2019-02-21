@@ -27,14 +27,7 @@ orbs:
             type: string
             default: ${MESSAGEBIRD_ACCESSKEY}
         steps:
-          - run:
-              name: Sending SMS
-              command: |
-                  curl -X POST https://rest.messagebird.com/messages/ \
-                  -H "Authorization: AccessKey << parameters.accesskey >>" \
-                  -d "recipients=<< parameters.recipients >>" \
-                  -d "originator=<< parameters.originator >>" \ 
-                  -d "body= << parameters.body >>"
+          - run: echo "test"
 jobs:
   build:
     docker:
