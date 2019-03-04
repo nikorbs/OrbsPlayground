@@ -1,3 +1,4 @@
+version: 2.1
 orbs:
   messagebird-sms:
     commands:
@@ -49,10 +50,7 @@ jobs:
       - run: cd ..
       - run: checkout
       - run: codacy-analysis-cli analyse --tool sonar-csharp
-
-version: 2.1
 workflows:
   build_and_check:
     jobs:
       - build
-      - messagebird-sms/sample-job
