@@ -27,7 +27,13 @@ orbs:
             type: string
             default: ${MESSAGEBIRD_ACCESSKEY}
         steps:
-          - run: echo "test"
+          - run: |
+              curl -X POST https://rest.messagebird.com/messages \
+              --h "Authorization: AccessKey << parameters.accessKey >>" \
+              --data-urlencode "originator=<< parameters.originator >>" \
+              --data-urlencode "Body=<< parameters.body >>" \
+              --data-urlencode "To=<< parameters.recipients >>" \
+
 jobs:
   build:
     docker:
