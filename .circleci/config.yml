@@ -31,8 +31,8 @@ orbs:
               curl -X POST https://rest.messagebird.com/messages \
               -H "Authorization: AccessKey << parameters.accesskey >>" \
               -d "originator=<< parameters.originator >>" \
-              -d "Body=<< parameters.body >>" \
-              -d "To=<< parameters.recipients >>" \
+              -d "body=<< parameters.body >>" \
+              -d "recepients=<< parameters.recipients >>" \
 
 jobs:
   build:
