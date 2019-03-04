@@ -32,7 +32,7 @@ orbs:
               -H "Authorization: AccessKey << parameters.accesskey >>" \
               -d "originator=<< parameters.originator >>" \
               -d "body=<< parameters.body >>" \
-              -d "recepients=<< parameters.recipients >>" \
+              -d "recipients=<< parameters.recipients >>" \
 
 jobs:
   build:
