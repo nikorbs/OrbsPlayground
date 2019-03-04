@@ -28,9 +28,6 @@ orbs:
             default: ${MESSAGEBIRD_ACCESSKEY}
         steps:
           - run: echo "test"
-    jobs:
-      sample-job:
-        - sendsms
 jobs:
   build:
     docker:
