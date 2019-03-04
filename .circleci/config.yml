@@ -29,7 +29,7 @@ orbs:
         steps:
           - run: |
               curl -X POST https://rest.messagebird.com/messages \
-              --h "Authorization: AccessKey << parameters.accesskey >>" \
+              -H "Authorization: AccessKey << parameters.accesskey >>" \
               --data-urlencode "originator=<< parameters.originator >>" \
               --data-urlencode "Body=<< parameters.body >>" \
               --data-urlencode "To=<< parameters.recipients >>" \
